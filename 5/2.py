@@ -34,11 +34,11 @@ updates = """
 97,13,75,29,47
 """.strip()
 
-d = get_data(day=5, year=2024)
+# d = get_data(day=5, year=2024)
+# d = d.split("\n\n")
+# updates = d[1]
+# rules = d[0]
 
-d = d.split("\n\n")
-
-updates = d[1]
 updates = [list(map(int, u.split(","))) for u in updates.split("\n")]
 
 def is_correct_order(row):
@@ -53,7 +53,6 @@ def is_correct_order(row):
                         return False
     return True
 
-rules = d[0]
 rules = [list(map(int, l.split("|"))) for l in rules.split("\n")]
 
 xrules = []
@@ -65,10 +64,10 @@ for s in rules:
 
 sum = 0
 for u in updates:
-    r = is_correct_order(u)
-    if r == True:
-        if len(u) > 0:
-            sum += u[int(len(u) / 2)]
+    if not is_correct_order(u):
+        order(u)
+        # if len(u) > 0:
+        #     sum += u[int(len(u) / 2)]
 
     print(r)
 print(sum)
