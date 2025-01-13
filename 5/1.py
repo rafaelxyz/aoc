@@ -44,7 +44,7 @@ updates = [list(map(int, u.split(","))) for u in updates.split("\n")]
 def is_correct_order(row):
     print(row)
     prev = []
-    for i, r in enumerate(row):
+    for r in row:
         prev.append(r)
         for j, x in enumerate(xrules):
             if r == x:
@@ -54,7 +54,7 @@ def is_correct_order(row):
     return True
 
 rules = d[0]
-rules = [list(map(int, l.split("|"))) for l in rules.split("\n")]
+rules = [list(map(int, lst.split("|"))) for lst in rules.split("\n")]
 
 xrules = []
 yrules = []
@@ -66,7 +66,7 @@ for s in rules:
 sum = 0
 for u in updates:
     r = is_correct_order(u)
-    if r == True:
+    if r:
         if len(u) > 0:
             sum += u[int(len(u) / 2)]
 
